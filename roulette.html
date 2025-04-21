@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>🎲 Казино Рулетка</title>
+  <style>
+    body {
+      background: #121212;
+      color: #fff;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+    }
+    h1 {
+      color: gold;
+    }
+    #wheel {
+      width: 250px;
+      height: 250px;
+      border: 10px solid #fff;
+      border-radius: 50%;
+      margin: 20px auto;
+      background: conic-gradient(
+        red 0% 25%,
+        green 25% 50%,
+        blue 50% 75%,
+        orange 75% 100%
+      );
+      animation: spin 0s linear;
+    }
+    #spin {
+      padding: 15px 30px;
+      font-size: 18px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎰 Крути рулетку и получи бонус!</h1>
+<div id="wheel"></div>
+<button id="spin">🎲 Крутить</button>
+<div id="result"></div>
+
+<script>
+  const prizes = [
+    "🎉 500% к депозиту!",
+    "🎁 75 фриспинов!",
+    "💸 Кэшбэк 50%!",
+    "📈 VIP-доступ на 24ч!"
+  ];
+
+  const spinButton = document.getElementById('spin');
+  const resultDiv = document.getElementById('result');
+  const wheel = document.getElementById('wheel');
+
+  spinButton.onclick = () => {
+    wheel.style.animation = "spin 2s ease-out";
+    resultDiv.textContent = "";
+
+    setTimeout(() => {
+      const prize = prizes[Math.floor(Math.random() * prizes.length)];
+      resultDiv.textContent = "🎊 Ты выиграл: " + prize;
+      wheel.style.animation = "";
+    }, 2000);
+  };
+</script>
+
+</body>
+</html>
